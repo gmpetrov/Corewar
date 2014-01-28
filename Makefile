@@ -6,22 +6,26 @@
 #    By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/21 16:14:59 by gpetrov           #+#    #+#              #
-#    Updated: 2014/01/28 17:43:26 by gpetrov          ###   ########.fr        #
+#    Updated: 2014/01/28 22:29:46 by gpetrov          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME	= asm
-FILES	= main.c
-SRCS	= $(addprefix src/, $(FILES))
-OBJS	= $(SRCS:src/%.c=.obj/%.o)
-INC		= -I includes -I libft/includes
-FLAGS	= -Wall -Wextra -Werror
-LIB		= -L libft -lft
+NAME		= asm
+NAME2		= corewar
+FILES		= assembleur.c
+FILES_COR	= corewar.c list.c tools.c
+SRCS		= $(addprefix src/, $(FILES))
+SRCS_COR 	= $(addprefix src/, $(FILES_COR))
+OBJS		= $(SRCS:src/%.c=.obj/%.o)
+INC			= -I includes -I libft/includes
+FLAGS		= # -Wall -Wextra -Werror
+LIB			= -L libft -lft
 
-all: $(NAME)
+all: $(NAME) $(NAME2)
 $(NAME): $(OBJS)
 	make -C libft
 	cc $(FLAGS) $(SRCS) -o $(NAME) $(INC) $(LIB)
+	cc $(FLAGS) $(SRCS_COR) -o $(NAME2) $(INC) $(LIB)
 .obj/%.o: src/%.c
 	mkdir -p .obj
 	cc -c $< -o $@ $(FLAGS) $(INC)
@@ -33,4 +37,5 @@ clean:
 	rm -rf .obj
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(NAME2)
 re: fclean all
