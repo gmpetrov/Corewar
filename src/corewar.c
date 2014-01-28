@@ -6,7 +6,7 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/28 18:35:32 by gpetrov           #+#    #+#             */
-/*   Updated: 2014/01/28 23:09:04 by gpetrov          ###   ########.fr       */
+/*   Updated: 2014/01/28 23:20:32 by gpetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int		main(int ac, char **av)
 	if (ft_error_ac(ac) == -1)
 		return (0);
 	ft_read_op(&d, av);
-	ft_read_players(&d);
 	ft_print_list(d.player);
 	return (0);
 }
